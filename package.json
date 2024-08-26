@@ -1,5 +1,7 @@
 {
-  "name": "inventory-control",
+  "name": "inventorycontrol",
+  "author": "Angelo Cardoso <hoanngelos@gmail.com>",
+  "description": "Software de controle de estoque e vendas.",
   "version": "0.1.0",
   "private": true,
   "scripts": {

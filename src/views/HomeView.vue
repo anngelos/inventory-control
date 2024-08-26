@@ -61,7 +61,6 @@ export default {
   methods: {
     showDeleteModal(index) {
       this.selectedProductIndex = index;
-      console.log(`o index selecionado é o ${index}`)
       this.showDeleteProductModal = true;
     },
 
