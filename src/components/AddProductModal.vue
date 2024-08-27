@@ -11,27 +11,23 @@
                 <input type="text" v-model="newProduct.product" placeholder="breve nome do produto"
                   class="flex-1 py-2 border-b-2 border-gray-400 focus:border-[#3F83F8] text-black placeholder-gray-500 outline-none">
               </div>
-
               <div class="flex items-center mb-5">
                 <label class="inline-block w-20 mr-6 text-right font-bold text-black">Detalhes</label>
                 <textarea v-model="newProduct.details" placeholder="adicione mais informações sobre o produto" cols="50"
                   rows="4" class="pl-1 border border-gray-500 placeholder-gray-500"></textarea>
               </div>
-
               <div class="flex items-center mb-5">
                 <label for="number" class="inline-block w-20 mr-6 text-right font-bold text-black">Estoque</label>
                 <input v-model="newProduct.inventory" type="number" placeholder="quantidade disponível em estoque"
                   class="flex-1 py-2 border-b-2 border-gray-400 focus:border-[#3F83F8] 
                 text-gray-500 placeholder-gray-500 outline-none">
               </div>
-
               <div class="flex items-center mb-5">
                 <label for="number" class="inline-block w-20 mr-6 text-right font-bold text-black">Valor
                   Unitário</label>
                 <input v-model="newProduct.unity_value" type="number" placeholder="valor unitário do produto" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-[#3F83F8] 
                 text-gray-500 placeholder-gray-500 outline-none">
               </div>
-
             </div>
           </div>
           <div class="space-y-4">

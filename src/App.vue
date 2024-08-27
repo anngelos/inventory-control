@@ -13,17 +13,6 @@ export default {
 </script>
 
 <style>
-@font-face {
-  font-family: 'Oswald';
-  src: url('@/assets/Oswald.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-#app {
-  font-family: Oswald, Helvetica, Arial, sans-serif;
-}
-
 nav {
   padding: 30px;
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="home mt-5">
     <add-product-modal v-if="addProductModal" @close="closeAddProductModal" />
-    <delete-inventory-product v-if="showDeleteProductModal" @close="closeDeleteInventoryProduct" :productIndex="selectedProductIndex"/>
-    <edit-product-modal v-if="showEditProductModal" @close="closeEditProductModal" />
+    <delete-inventory-product v-if="showDeleteProductModal" @close="closeDeleteInventoryProduct" :productIndex="selectedProductIndex" />
+    <edit-product-modal v-if="showEditProductModal" @close="closeEditProductModal" @save="handleSaveProduct" :product="selectedProduct" />
     <div class="flex justify-center gap-4">
       <button type="button" class="px-6 py-2 min-w-[120px] text-center text-[#3F83F8] border border-[#3F83F8]
         rounded hover:bg-[#3F83F8] hover:text-white active:bg-[#3F83F8] focus:outline-none focus:ring"
@@ -22,13 +22,16 @@
       <p class="text-gray-500 mb-1">{{ products.length }} produtos cadastrados</p>
       <div v-for="(product, index) in products" :key="index" class="md:flex border rounded-lg border-black mb-5">
         <div class="p-8">
-          <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold">#{{ index + 1 }} - {{ product.product }}</div>
+          <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold">#{{ index + 1 }} - {{ product.product
+            }}</div>
           <p class="block mt-1 text-lg leading-tight font-medium text-gray-500">{{ product.details }}</p>
           <p class="mt-2 text-black">{{ product.inventory }} unidades</p>
           <p class="mt-2 text-black">{{ convertToMoney(product.unity_value) }}</p>
           <div class="mt-4">
-            <button @click="showEditModal" class="bg-[#3F83F8] text-white px-4 py-2 rounded hover:bg-blue-400 focus:outline-none">Editar</button>
-            <button @click="showDeleteModal(index)" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-red-500 hover:text-white focus:outline-none ml-2">
+            <button @click="showEditModal(index)"
+              class="bg-[#3F83F8] text-white px-4 py-2 rounded hover:bg-blue-400 focus:outline-none">Editar</button>
+            <button @click="showDeleteModal(index)"
+              class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-red-500 hover:text-white focus:outline-none ml-2">
               Excluir
             </button>
           </div>
@@ -57,6 +60,12 @@ export default {
   },
   computed: {
     ...mapState(['products']),
+
+    selectedProduct() {
+      return this.selectedProductIndex !== null
+        ? this.products[this.selectedProductIndex]
+        : null;
+    },
   },
   methods: {
     showDeleteModal(index) {
@@ -72,7 +81,9 @@ export default {
       this.showDeleteProductModal = false;
     },
 
-    showEditModal() {
+    showEditModal(index) {
+      this.selectedProductIndex = index;
+      console.log('index = ', index);
       this.showEditProductModal = true;
     },
 
@@ -87,6 +98,11 @@ export default {
 
     closeAddProductModal() {
       this.addProductModal = false;
+    },
+
+    handleSaveProduct(updatedProduct) {
+      this.$store.commit('updateProduct', { index: this.selectedProductIndex, product: updatedProduct });
+      this.closeEditProductModal();
     }
   }
 }

@@ -13,7 +13,11 @@ export default createStore({
 
     removeProduct(state, index) {
       state.products.splice(index, 1);
-    }
+    },
+
+    updateProduct(state, { index, product }) {
+      state.products.splice(index, 1, product);
+    },
   },
   actions: {
     addProduct({ commit }, product) {
