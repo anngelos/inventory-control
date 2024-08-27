@@ -83,7 +83,6 @@ export default {
 
     showEditModal(index) {
       this.selectedProductIndex = index;
-      console.log('index = ', index);
       this.showEditProductModal = true;
     },
 
