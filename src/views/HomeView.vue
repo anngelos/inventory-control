@@ -9,21 +9,19 @@
         @click="showAddProductModal">
         Cadastrar produto
       </button>
-      <input type="text" class="px-6 py-2 min-w-[120px] text-black border border-[#3F83F8]
+      <input type="text" v-model="searchQuery" class="px-6 py-2 min-w-[120px] text-black border border-[#3F83F8]
         rounded focus:outline-none focus:ring" placeholder="procurar no estoque">
     </div>
 
-    <div v-if="!products.length" class="mt-20 mb-20 text-center">
-      <p>Nenhum produto cadastrado no momento...</p>
-      <p>Comece cadastrando seus produtos em estoque para que eles sejam visualizados aqui!</p>
+    <div v-if="!filteredProducts.length" class="mt-20 mb-20 text-center">
+      <p>Nenhum produto encontrado...</p>
     </div>
 
     <div v-else class="max-w-sm mx-auto bg-white shadow-md overflow-hidden md:max-w-2xl mt-10">
-      <p class="text-gray-500 mb-1">{{ products.length }} produtos cadastrados</p>
-      <div v-for="(product, index) in products" :key="index" class="md:flex border rounded-lg border-black mb-5">
+      <p class="text-gray-500 mb-1">{{ filteredProducts.length }} produtos cadastrados</p>
+      <div v-for="(product, index) in filteredProducts" :key="index" class="md:flex border rounded-lg border-black mb-5">
         <div class="p-8">
-          <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold">#{{ index + 1 }} - {{ product.product
-            }}</div>
+          <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold">#{{ index + 1 }} - {{ product.product }}</div>
           <p class="block mt-1 text-lg leading-tight font-medium text-gray-500">{{ product.details }}</p>
           <p class="mt-2 text-black">{{ product.inventory }} unidades</p>
           <p class="mt-2 text-black">{{ convertToMoney(product.unity_value) }}</p>
@@ -56,6 +54,7 @@ export default {
       showDeleteProductModal: false,
       showEditProductModal: false,
       selectedProductIndex: null,
+      searchQuery: '',
     }
   },
   computed: {
@@ -66,6 +65,17 @@ export default {
         ? this.products[this.selectedProductIndex]
         : null;
     },
+
+    filteredProducts() {
+      if (!this.searchQuery) {
+        return this.products;
+      }
+      const query = this.searchQuery.toLowerCase();
+      return this.products.filter(product =>
+        product.product.toLowerCase().includes(query) ||
+        product.details.toLowerCase().includes(query)
+      );
+    }
   },
   methods: {
     showDeleteModal(index) {
