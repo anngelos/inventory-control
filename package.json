@@ -1,17 +1,19 @@
 {
   "name": "inventorycontrol",
-  "author": "Angelo Cardoso <hoanngelos@gmail.com>",
-  "description": "Software de controle de estoque e vendas.",
   "version": "0.1.0",
   "private": true,
+  "description": "Software de controle de estoque e vendas.",
+  "author": "Angelo Cardoso <hoanngelos@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "test:watch": "jest --verbose --watch"
   },
   "main": "background.js",
   "dependencies": {
@@ -27,13 +29,18 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
     "autoprefixer": "^10.4.20",
+    "babel-jest": "^27.0.6",
     "electron": "^13.0.0",
     "electron-devtools-installer": "^3.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "jest": "^27.0.5",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
     "vue-cli-plugin-electron-builder": "~2.1.1"
