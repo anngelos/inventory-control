@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/App.vue</title>
+    <title>Code coverage report for store/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> App.vue</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">store</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">81.08% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>30/37</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">81.08% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>30/37</span>
             </div>
         
             
@@ -90,7 +90,17 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -100,6 +110,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -108,42 +137,43 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;nav-menu/&gt;
-  &lt;router-view/&gt;
-&lt;/template&gt;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 &nbsp;
-&lt;script&gt;
-import NavMenu from "./components/NavMenu";
+export default createStore({
+  state: {
+    products: [],
+  },
+  getters: {},
+  mutations: {
+<span class="fstat-no" title="function not covered" >    addNewProduct(state, product) {</span>
+<span class="cstat-no" title="statement not covered" >      state.products.push(product);</span>
+    },
 &nbsp;
-export default {
-  name: "App",
-  components: { NavMenu }
-}
-&lt;/script&gt;
+<span class="fstat-no" title="function not covered" >    removeProduct(state, index) {</span>
+<span class="cstat-no" title="statement not covered" >      state.products.splice(index, 1);</span>
+    },
 &nbsp;
-&lt;style&gt;
-nav {
-  padding: 30px;
-}
+<span class="fstat-no" title="function not covered" >    updateProduct(state, { index, product }) {</span>
+<span class="cstat-no" title="statement not covered" >      state.products.splice(index, 1, product);</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+  },
+  actions: {
+<span class="fstat-no" title="function not covered" >    addProduct({ commit }, product) {</span>
+<span class="cstat-no" title="statement not covered" >      commit('addNewProduct', product);</span>
+    },
 &nbsp;
-nav router-link {
-  font-weight: bold;
-}
-&nbsp;
-nav a.router-link-exact-active {
-  color: #3F83F8;
-}
-&lt;/style&gt;
+<span class="fstat-no" title="function not covered" >    deleteProduct({ commit }, index) {</span>
+<span class="cstat-no" title="statement not covered" >      commit('removeProduct', index);</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+  },
+  plugins: [
+    createPersistedState({
+      key: 'my-vuex-store',
+      paths: ['products'],
+    }),
+  ],
+});
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -151,7 +181,7 @@ nav a.router-link-exact-active {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-30T19:31:30.457Z
+                at 2024-09-30T16:33:25.120Z
             </div>
         <script src="../prettify.js"></script>
         <script>

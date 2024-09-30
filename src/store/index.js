@@ -5,7 +5,6 @@ export default createStore({
   state: {
     products: [],
   },
-  getters: {},
   mutations: {
     addNewProduct(state, product) {
       state.products.push(product);

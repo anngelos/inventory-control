@@ -16,4 +16,5 @@ module.exports = {
   ],
   resolver: undefined,
   coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
 };
